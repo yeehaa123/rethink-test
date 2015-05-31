@@ -24648,6 +24648,7 @@ module.exports = warning;
 module.exports = require('./lib/React');
 
 },{"./lib/React":85}],213:[function(require,module,exports){
+(function (global){
 'use strict';
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -24676,6 +24677,11 @@ var _resourceListItemJsx = require('./resourceListItem.jsx');
 
 var _resourceListItemJsx2 = _interopRequireDefault(_resourceListItemJsx);
 
+var ws;
+if (global.WebSocket) {
+  ws = new WebSocket('ws:/localhost:4000') || null;
+};
+
 var Index = (function (_React$Component) {
   function Index(props) {
     _classCallCheck(this, Index);
@@ -24689,21 +24695,27 @@ var Index = (function (_React$Component) {
   _inherits(Index, _React$Component);
 
   _createClass(Index, [{
-    key: 'handleSubmit',
-    value: function handleSubmit(e) {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
       var _this = this;
 
-      e.preventDefault();
       var resources = this.state.resources;
 
-      var url = _react2['default'].findDOMNode(this.refs.url).value.trim();
-      var tags = _react2['default'].findDOMNode(this.refs.tags).value.trim();
-      _axios2['default'].put('/new', { url: url, tags: tags }).then(function (_ref) {
+      ws.onmessage = function (_ref) {
         var data = _ref.data;
 
-        resources.push(data);
-        return _this.setState({ resources: resources });
-      })['catch'](function (response) {
+        var resource = JSON.parse(data);
+        resources.push(resource);
+        _this.setState({ resources: resources });
+      };
+    }
+  }, {
+    key: 'handleSubmit',
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      var url = _react2['default'].findDOMNode(this.refs.url).value.trim();
+      var tags = _react2['default'].findDOMNode(this.refs.tags).value.trim();
+      _axios2['default'].put('/new', { url: url, tags: tags })['catch'](function (response) {
         return console.log(response);
       });
     }
@@ -24750,6 +24762,7 @@ var Index = (function (_React$Component) {
 
 module.exports = Index;
 
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"./page.jsx":214,"./resourceListItem.jsx":215,"axios":1,"react":212}],214:[function(require,module,exports){
 'use strict';
 

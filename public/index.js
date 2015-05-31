@@ -7,6 +7,7 @@ var Client = require('react-engine/lib/client');
 // static require statements.
 require('./views/**/*.jsx', {glob: true});
 
+
 // boot options
 var options = {
   // supply a function that can be called

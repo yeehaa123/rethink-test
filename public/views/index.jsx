@@ -3,6 +3,9 @@ import axios from 'axios';
 import Page from './page.jsx';
 import ResourceListItem from './resourceListItem.jsx';
 
+var ws;
+if(global.WebSocket){ ws = new WebSocket('ws:/localhost:4000') || null };
+
 class Index extends React.Component {
   constructor(props){
     super(props);
@@ -10,17 +13,21 @@ class Index extends React.Component {
     this.state = { resources };
   }
 
+  componentDidMount(){
+    let { resources } = this.state;
+    ws.onmessage = ({data}) => {
+      let resource = JSON.parse(data);
+      resources.push(resource);
+      this.setState({ resources: resources });
+    };
+  }
+
   handleSubmit(e){
     e.preventDefault();
-    let { resources } = this.state;
     let url = React.findDOMNode(this.refs.url).value.trim();
     let tags = React.findDOMNode(this.refs.tags).value.trim();
     axios.put('/new', {url, tags})
-    .then(({data}) => {
-      resources.push(data);
-      return this.setState({ resources: resources });
-    })
-    .catch((response) => console.log(response))
+      .catch((response) => console.log(response))
   }
 
   render() {

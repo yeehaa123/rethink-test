@@ -2,10 +2,14 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import renderer from 'react-engine';
 import r from "rethinkdb";
+var WebSocketServer = require("ws").Server;
+
+
 
 let options = { host: '172.17.0.1', port: 28015, db: 'twurl'};
 
 let app = express();
+let server = require('http').Server(app);
 let engine = renderer.server.create();
 
 app.use(createConnection);
@@ -18,16 +22,23 @@ app.set('view', renderer.expressView);
 
 app.use(express.static(__dirname + '/public'));
 
+server.listen(4000);
+
+var wss = new WebSocketServer({server: server});
+
+wss.on('connection', (ws) => {
+  r.connect(options).then((conn) => {
+    r.table('resources').changes().run(conn)
+    .then((cursor) => cursor.each((err, {new_val}) => {
+      ws.send(JSON.stringify(new_val));
+    }));
+  });
+});
+
 app.get('', index);
 app.get('/tags', tagsPage);
 app.put('/new', create);
 
-app.listen(4000);
-
-r.connect(options).then((conn) => {
-  r.table('resources').changes().run(conn)
-  .then((cursor) => cursor.each(console.log));
-});
 
 function createConnection(req, res, next) {
   r.connect(options).then((conn) => {
@@ -37,7 +48,7 @@ function createConnection(req, res, next) {
 }
 
 function handleError(res) {
-  return (error) => res.send(500, {error: error.message});
+  return (error) => res.status(500).send({error: error.message});
 }
 
 function create(req, res, next) {

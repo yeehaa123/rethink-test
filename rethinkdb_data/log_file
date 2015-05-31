@@ -1,0 +1,28 @@
+2015-05-30T19:23:41.091807786 0.119981s notice: Recursively removing directory /data/rethinkdb_data/tmp
+2015-05-30T19:23:41.118432520 0.146608s notice: Initializing directory /data/rethinkdb_data
+2015-05-30T19:23:41.118572874 0.146745s info: Creating a default database for your convenience. (This is because you ran 'rethinkdb' without 'create', 'serve', or '--join', and the directory '/data/rethinkdb_data' did not already exist or is empty.)
+2015-05-30T19:23:41.118607539 0.146779s notice: Running rethinkdb 2.0.2~0jessie (GCC 4.9.1)...
+2015-05-30T19:23:41.126277752 0.154456s notice: Running on Linux 3.16.0-36-generic x86_64
+2015-05-30T19:23:41.126418748 0.154591s notice: Loading data from directory /data/rethinkdb_data
+2015-05-30T19:23:41.242621672 0.270794s info: Automatically using cache size of 1610 MB
+2015-05-30T19:23:41.281707598 0.309879s notice: Listening for intracluster connections on port 29015
+2015-05-30T19:23:41.282355628 0.310527s notice: Listening for client driver connections on port 28015
+2015-05-30T19:23:41.282452804 0.310624s notice: Listening for administrative HTTP connections on port 8080
+2015-05-30T19:23:41.452656815 0.480829s notice: Listening on addresses: 127.0.0.1, 172.17.0.22, ::1, fe80::42:acff:fe11:16%44
+2015-05-30T19:23:41.452663645 0.480835s notice: Server ready, "yeehaa" fd523e0a-d94d-40e9-9a1f-27bde215bc09
+2015-05-30T19:30:57.830654572 436.858826s notice: Removing file /data/rethinkdb_data/11a904a0-eee5-458d-a1a6-9b5eaf1e2d8f
+2015-05-30T19:51:17.022208628 1656.050381s notice: Removing file /data/rethinkdb_data/01b710f5-7dd4-4425-9acb-e66d99604444
+2015-05-30T19:54:10.092657259 1829.120829s notice: Removing file /data/rethinkdb_data/8c640416-948d-4e76-b630-eebf44ddc192
+2015-05-30T19:56:42.102866506 1981.131039s notice: Removing file /data/rethinkdb_data/ce0dbf8c-5df2-4acc-9e77-39927004b3e2
+2015-05-30T20:10:11.034023998 2790.062196s notice: Removing file /data/rethinkdb_data/d129ee5a-f113-4f60-9ecb-3c94083191b9
+2015-05-30T20:11:46.094737635 2885.122910s notice: Removing file /data/rethinkdb_data/76f5c418-024c-43ae-ace9-0947112bb2c1
+2015-05-30T20:13:43.654736124 3002.682908s notice: Removing file /data/rethinkdb_data/8704ff56-664d-4cdd-a2df-307e93622ed0
+2015-05-31T14:53:28.311186804 0.160188s notice: Running rethinkdb 2.0.2~0jessie (GCC 4.9.1)...
+2015-05-31T14:53:28.317365484 0.166366s notice: Running on Linux 3.16.0-36-generic x86_64
+2015-05-31T14:53:28.317456272 0.166453s notice: Loading data from directory /data/rethinkdb_data
+2015-05-31T14:53:28.364448617 0.213449s info: Automatically using cache size of 2686 MB
+2015-05-31T14:53:28.420671026 0.269669s notice: Listening for intracluster connections on port 29015
+2015-05-31T14:53:28.423213773 0.272211s notice: Listening for client driver connections on port 28015
+2015-05-31T14:53:28.423464374 0.272462s notice: Listening for administrative HTTP connections on port 8080
+2015-05-31T14:53:28.504294420 0.353292s notice: Listening on addresses: 127.0.0.1, 172.17.0.1, ::1, fe80::42:acff:fe11:1%4
+2015-05-31T14:53:28.504309968 0.353307s notice: Server ready, "yeehaa" fd523e0a-d94d-40e9-9a1f-27bde215bc09

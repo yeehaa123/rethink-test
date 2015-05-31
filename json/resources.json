@@ -1,0 +1,8 @@
+[
+  {"url": "http://google.com", "tags": ["everything", "nothing"]},
+  {"url": "http://yahoo.com", "tags": ["something", "nothing"]},
+  {"url": "http://bing.com", "tags": ["something", "nothing"]},
+  {"url": "http://altavista.com", "tags": ["nothing"]},
+  {"url": "http://flyingmonkey.com", "tags": ["loads", "something"]},
+  {"url": "http://duckduckgo.com", "tags": ["who knows"]}
+]

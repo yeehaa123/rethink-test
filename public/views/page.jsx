@@ -10,6 +10,7 @@ let Page = React.createClass({
         <body>
           {this.props.children}
         </body>
+        <script src='/bundle.js'></script>
       </html>
     )
   }

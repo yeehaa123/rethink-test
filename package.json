@@ -4,17 +4,27 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "babel-node": "babel-node --stage 0 --ignore='foo|bar|baz'"
+    "start": "npm run browserify && npm run babel-node server.js",
+    "browserify": "browserify -t babelify -t require-globify public/index.js -o public/bundle.js",
+    "babel-node": "babel-node --stage 0 --ignore='foo|bar|baz'",
+    "nodemon": "nodemon --exec npm run babel-node -- ./server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "async": "^1.0.0",
     "babel": "^5.4.7",
+    "body-parser": "^1.12.4",
     "express": "^4.12.4",
     "react": "^0.13.3",
     "react-engine": "^1.6.0",
     "react-router": "^0.13.3",
     "rethinkdb": "^2.0.0-1"
+  },
+  "devDependencies": {
+    "axios": "^0.5.4",
+    "babelify": "^6.1.2",
+    "browserify": "^10.2.3",
+    "require-globify": "^1.2.1"
   }
 }
